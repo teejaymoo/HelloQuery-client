@@ -1,9 +1,12 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import { Route } from 'react-router-dom'
+import SearchBar from '../searchBar/searchBar'
 
 const authenticatedOptions = (
   <Fragment>
+    <Nav.Link href="#create">Create a Query</Nav.Link>
     <Nav.Link href="#change-password">Change Password</Nav.Link>
     <Nav.Link href="#sign-out">Sign Out</Nav.Link>
   </Fragment>
@@ -27,6 +30,9 @@ const Header = ({ user }) => (
     <Navbar.Brand href="#">
       HelloQuery-client
     </Navbar.Brand>
+    <Route exact path='/' render={() => (
+      <SearchBar />
+    )} />
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">

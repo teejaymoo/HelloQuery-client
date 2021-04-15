@@ -1,1 +1,20 @@
 @import '~bootstrap/scss/bootstrap';
+
+
+.form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.navbar, .navbar-expand-md, .navbar-dark, .bg-primary {
+  margin: 0 10% 0 10%
+}
+
+.card-body {
+  padding: 0;
+}

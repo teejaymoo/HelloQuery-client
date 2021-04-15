@@ -10,12 +10,18 @@ import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 
+import LandingPageQueries from './components/QueriesPath/landingPageQueries'
+import ShowQuery from './components/QueriesPath/showQuery'
+import CreatingQuery from './components/QueriesPath/createQuery'
+// import SearchBar from './components/searchBar/searchBar'
+
 class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
       user: null,
-      msgAlerts: []
+      msgAlerts: [],
+      searchField: ''
     }
   }
 
@@ -38,7 +44,6 @@ class App extends Component {
 
   render () {
     const { msgAlerts, user } = this.state
-
     return (
       <Fragment>
         <Header user={user} />
@@ -65,6 +70,15 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} exact path='/create' render={() => (
+            <CreatingQuery msgAlert={this.msgAlert} user={user} />
+          )} />
+          <Route user={user} exact path='/' render={() => (
+            <LandingPageQueries user={user} msgAlert={this.msgAlert} />
+          )}/>
+          <Route user={user} path= '/queries/:id' render={() => (
+            <ShowQuery user={user} msgAlert={this.msgAlert} />
+          )}/>
         </main>
       </Fragment>
     )
