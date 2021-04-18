@@ -13,7 +13,6 @@ import ChangePassword from './components/ChangePassword/ChangePassword'
 import LandingPageQueries from './components/QueriesPath/landingPageQueries'
 import ShowQuery from './components/QueriesPath/showQuery'
 import CreatingQuery from './components/QueriesPath/createQuery'
-// import SearchBar from './components/searchBar/searchBar'
 
 class App extends Component {
   constructor (props) {
@@ -70,7 +69,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} exact path='/create' render={() => (
+          <Route user={user} exact path='/create' render={() => (
             <CreatingQuery msgAlert={this.msgAlert} user={user} />
           )} />
           <Route user={user} exact path='/' render={() => (
