@@ -1,11 +1,19 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
 import { signIn } from '../../api/auth'
 import messages from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+
+const boxStyle = {
+  border: '1px solid',
+  padding: '10%'
+}
+const account = {
+  float: 'right'
+}
 
 class SignIn extends Component {
   constructor (props) {
@@ -49,7 +57,7 @@ class SignIn extends Component {
 
     return (
       <div className="row">
-        <div className="col-sm-10 col-md-8 mx-auto mt-5">
+        <div className="col-sm-10 col-md-8 mx-auto mt-5" style={boxStyle}>
           <h3>Sign In</h3>
           <Form onSubmit={this.onSignIn}>
             <Form.Group controlId="email">
@@ -79,7 +87,7 @@ class SignIn extends Component {
               type="submit"
             >
               Submit
-            </Button>
+            </Button><p style={account}>Not a member? Create an <Link to='/sign-up'>Account</Link></p>
           </Form>
         </div>
       </div>
