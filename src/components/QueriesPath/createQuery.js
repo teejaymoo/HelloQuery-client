@@ -1,7 +1,16 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import QueryForm from '../queryForm/queryForm'
 import { createQueries } from '../../api/queries'
+
+const containerStyle = {
+  border: '1px solid',
+  margin: '10%',
+  paddingBottom: '10%'
+}
+const boxStyle = {
+  border: '1px solid'
+}
 
 class CreatingQuery extends Component {
   constructor (props) {
@@ -44,16 +53,28 @@ class CreatingQuery extends Component {
       })
   }
   render () {
+    const { user } = this.props
     const { query, createdQueryId } = this.state
     if (createdQueryId) {
       return <Redirect to={`/queries/${createdQueryId}`} />
     }
+
+    if (!user) {
+      return (
+        <div className='row'>
+          <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+            <h3>Need to be <Link to='/sign-in'>signed in</Link>, or create an <Link to='/sign-up'>account</Link> to create a Query</h3>
+          </div>
+        </div>
+      )
+    }
     return (
-      <div className='row'>
-        <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+      <div className='row' style={containerStyle}>
+        <div className='col-sm-10 col-md-8 mx-auto mt-5' style={boxStyle}>
           <h3>Create Query</h3>
           <QueryForm
             query={query}
+            user={user}
             handleSubmit={this.handleSubmit}
             handleChange={this.handleChange}
           />

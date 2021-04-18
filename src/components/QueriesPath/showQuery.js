@@ -20,6 +20,11 @@ const dateStyle = {
   justifyContent: 'flex-end'
 }
 
+const borderControl = {
+  border: '1px solid',
+  padding: '10px'
+}
+
 class ShowQuery extends Component {
   constructor (props) {
     super(props)
@@ -75,7 +80,7 @@ class ShowQuery extends Component {
   render () {
     const { user } = this.props
     const { query, deleted } = this.state
-    console.log(query)
+
     let queryJsx = ''
     if (deleted) {
       return <Redirect to='/'/>
@@ -89,7 +94,7 @@ class ShowQuery extends Component {
     }
     if (!user) {
       queryJsx = (
-        <div>
+        <div style={borderControl}>
           <h2>{query.title}</h2>
           <p style={borderParagraph}>Written by: {query.keeper}</p>
           <p style={dateStyle} className="card-text"><small className="text-muted">Written on: {query.date.substring(0, 10)}</small></p><hr/>
@@ -98,7 +103,7 @@ class ShowQuery extends Component {
       )
     } else if (user && user._id !== query.keeper) {
       queryJsx = (
-        <div>
+        <div style={borderControl}>
           <h2>{query.title}</h2>
           <p style={borderParagraph}>Written by: {query.keeper}</p>
           <p style={dateStyle} className="card-text"><small className="text-muted">Written on: {query.date.substring(0, 10)}</small></p><hr/>
@@ -108,13 +113,13 @@ class ShowQuery extends Component {
       )
     } else if (user && user._id === query.keeper) {
       queryJsx = (
-        <div>
+        <div style={borderControl}>
           <h2>{query.title}</h2>
           <p style={borderParagraph}>Written by: {query.keeper}</p>
           <p style={dateStyle} className="card-text"><small className="text-muted">Written on: {query.date.substring(0, 10)}</small></p><hr/>
           <p>{query.body}</p>
           <button onClick={this.deleteQuery}><Link to={'/'}>Delete</Link></button>
-          <button><Link to={'/querys/' + this.props.match.params.id + '/edit/'}>Update query</Link></button>
+          <button><a className="btn" href={'/queries/' + this.props.match.params.id + '/edit/'}><i className="icon-edit"></i> Edit</a></button>
           {/* <button><Link to={'/querys/' + this.props.match.params.id + '/comments'}>Create Comment</Link></button> */}
         </div>
       )
