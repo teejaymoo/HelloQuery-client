@@ -6,15 +6,13 @@ import SearchBar from '../searchBar/searchBar'
 
 const authenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#create">Create a Query</Nav.Link>
-    <Nav.Link href="#change-password">Change Password</Nav.Link>
+    <Nav.Link href="#change-password">Change password</Nav.Link>
     <Nav.Link href="#sign-out">Sign Out</Nav.Link>
   </Fragment>
 )
 
 const unauthenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#sign-up">Sign Up</Nav.Link>
     <Nav.Link href="#sign-in">Sign In</Nav.Link>
   </Fragment>
 )
@@ -30,13 +28,13 @@ const Header = ({ user }) => (
     <Navbar.Brand href="#">
       HelloQuery-client
     </Navbar.Brand>
-    <Route exact path='/' render={() => (
-      <SearchBar />
-    )} />
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
+      <Route exact path='/' render={() => (
+        <SearchBar />
+      )} />
       <Nav className="ml-auto">
-        { user && <span className="navbar-text mr-2">Welcome, {user.email}</span>}
+        { user && <span className="navbar-text mr-2">Welcome, {user.username}</span>}
         { alwaysOptions }
         { user ? authenticatedOptions : unauthenticatedOptions }
       </Nav>
