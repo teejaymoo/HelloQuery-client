@@ -3,11 +3,17 @@ import { indexComments } from '../../api/comment'
 import { withRouter } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 
-const commentsStyle = {
-  textAlign: 'right',
-  fontSize: '20px',
-  color: 'black',
-  fontFamily: 'New Tegomin'
+const container = {
+  display: 'flex'
+}
+const box = {
+  height: '50%',
+  padding: '5%'
+}
+
+const dateStyle = {
+  display: 'flex',
+  justifyContent: 'flex-end'
 }
 
 class IndexComments extends Component {
@@ -25,15 +31,16 @@ class IndexComments extends Component {
   render () {
     const { comment } = this.state
     const commentJsx = comment.map(comment => (
-      <div className="card" key={uuidv4()}>
-        <div className="card-body">
+      <div className="card" style={box} key={uuidv4()}>
+        <div className="card-body" style={container}>
           <h4 className="card-title">{comment}</h4>
+          <p style={dateStyle} className="card-text"><small className="text-muted">{comment.timestamps}</small></p>
         </div>
       </div>
     ))
     return (
-      <div className="row" style={commentsStyle}>
-        <div className="col-sm-10 col-md-8 mx-auto mt-5">
+      <div>
+        <div>
           {commentJsx}
         </div>
       </div>

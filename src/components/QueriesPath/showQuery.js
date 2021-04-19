@@ -3,7 +3,6 @@ import { showQuery, deleteQuery } from '../../api/queries'
 import { withRouter, Link, Redirect } from 'react-router-dom'
 import Spinner from 'react-bootstrap/Spinner'
 import IndexComments from '../commentPath/indexComment'
-import CreateComment from '../commentPath/createComment'
 
 const showStyle = {
   textAlign: 'center',
@@ -89,6 +88,7 @@ class ShowQuery extends Component {
           <h2>{query.title}</h2>
           <p style={dateStyle} className="card-text"><small className="text-muted">Written on: {query.date.substring(0, 10)}</small></p><hr/>
           <p>{query.body}</p>
+          <p>Need to be <Link to='/sign-in'>signed in</Link>, or create an <Link to='/sign-up'>account</Link> to comment</p>
         </div>
       )
     } else if (user && user._id !== query.keeper) {
@@ -97,6 +97,7 @@ class ShowQuery extends Component {
           <h2>{query.title}</h2>
           <p style={dateStyle} className="card-text"><small className="text-muted">Written on: {query.date.substring(0, 10)}</small></p><hr/>
           <p>{query.body}</p>
+          <button><Link to={'/queries/' + this.props.match.params.id + '/comments'}>Create Comment</Link></button>
         </div>
       )
     } else if (user && user._id === query.keeper) {
@@ -109,7 +110,7 @@ class ShowQuery extends Component {
           </div>
           <p style={dateStyle} className="card-text"><small className="text-muted">Written on: {query.date.substring(0, 10)}</small></p><hr/>
           <p>{query.body}</p>
-          <CreateComment />
+          <button className="btn"><i className="fa fa-trash"></i><small className="text-muted"><Link to={'/queries/' + this.props.match.params.id + '/comments'}>Create Comment</Link></small></button>
         </div>
       )
     }
@@ -117,8 +118,8 @@ class ShowQuery extends Component {
       <div className="row" style={showStyle}>
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
           {queryJsx}
-          <IndexComments />
         </div>
+        <IndexComments />
       </div>
     )
   }

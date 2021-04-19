@@ -42,7 +42,7 @@ class CommentCreate extends Component {
       .catch(error => {
         msgAlert({
           heading: 'Failed to create comment',
-          message: 'Could not create comment with error:' + error.message,
+          message: 'Could not create comment with error: ' + error.message,
           variant: 'danger'
         })
       })
@@ -52,7 +52,7 @@ class CommentCreate extends Component {
     const { match } = this.props
 
     if (created) {
-      return <Redirect to={'/queries/' + match.params.id} />
+      return <Redirect to={'/queries/' + match.params.id } />
     }
 
     return (
