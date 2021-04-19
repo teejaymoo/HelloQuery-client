@@ -40,8 +40,6 @@ Hello Query will allow users to comment on each other questions as well.
 Hello Query will be commnicating with our notion API that will always be built by me.
 
 ### Built With
-
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 * [React](https://reactjs.org/)
 * [Node.js](https://nodejs.org/en/)
 * [Bootstrap](https://getbootstrap.com/)
