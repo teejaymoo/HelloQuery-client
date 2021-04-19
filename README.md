@@ -41,7 +41,7 @@ Hello Query will allow users to comment on each other questions as well.
 Hello Query will be commnicating with our notion API that will always be built by me.
 
 ### Important Links
-- [Other Repo](https://github.com/teejaymoo/HelloQuery-client)
+- [API Repo](https://github.com/teejaymoo/notion-api)
 - [Deployed API](https://notion-api-626.herokuapp.com/)
 - [Deployed Client](https://teejaymoo.github.io/HelloQuery-client/#/)
 
