@@ -14,7 +14,6 @@ import LandingPageQueries from './components/QueriesPath/landingPageQueries'
 import ShowQuery from './components/QueriesPath/showQuery'
 import CreatingQuery from './components/QueriesPath/createQuery'
 import CreateComment from './components/commentPath/createComment'
-import IndexComments from './components/commentPath/indexComment'
 import EditQuery from './components/QueriesPath/editQuery'
 
 class App extends Component {
@@ -86,9 +85,6 @@ class App extends Component {
           )}/>
           <AuthenticatedRoute user={user} path='/queries/:id/comments' render={() => (
             <CreateComment msgAlert={this.msgAlert} user={user} />
-          )} />
-          <Route user={user} path='/queries/:id/index-comments' render={() => (
-            <IndexComments msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>

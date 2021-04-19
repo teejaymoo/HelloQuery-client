@@ -1,7 +1,10 @@
 $primary: #e76f51;
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@1,700&display=swap');
 
-
+body {
+  font-family: 'Comic Neue'
+}
 .form-control-borderless {
     border: none;
 }
