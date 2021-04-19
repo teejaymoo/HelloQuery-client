@@ -22,6 +22,7 @@
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
+        <li><a href="#important-links">Important Links</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -38,6 +39,12 @@ Hello Query is a full stack web app using React.js to take users "questions" and
 Hello Query will allow users to comment on each other questions as well.
 
 Hello Query will be commnicating with our notion API that will always be built by me.
+
+### Important Links
+- [Other Repo](https://github.com/teejaymoo/HelloQuery-client)
+- [Deployed API](https://notion-api-626.herokuapp.com/)
+- [Deployed Client](https://teejaymoo.github.io/HelloQuery-client/#/)
+
 
 ### Built With
 * [React](https://reactjs.org/)
