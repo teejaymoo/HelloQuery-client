@@ -17,7 +17,8 @@ const linkStyle = {
 }
 
 const containerStyle = {
-  display: 'grid'
+  display: 'grid',
+  padding: '5% 0 0 0'
 }
 
 class LandingPage extends Component {

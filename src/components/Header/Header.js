@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import { Route } from 'react-router-dom'
-import SearchBar from '../searchBar/searchBar'
 
 const authenticatedOptions = (
   <Fragment>
@@ -26,13 +24,10 @@ const alwaysOptions = (
 const Header = ({ user }) => (
   <Navbar bg="primary" variant="dark" expand="md">
     <Navbar.Brand href="#">
-      HelloQuery-client
+      Hello Query
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
-      <Route exact path='/' render={() => (
-        <SearchBar />
-      )} />
       <Nav className="ml-auto">
         { user && <span className="navbar-text mr-2">Welcome, {user.username}</span>}
         { alwaysOptions }

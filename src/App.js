@@ -13,6 +13,9 @@ import ChangePassword from './components/ChangePassword/ChangePassword'
 import LandingPageQueries from './components/QueriesPath/landingPageQueries'
 import ShowQuery from './components/QueriesPath/showQuery'
 import CreatingQuery from './components/QueriesPath/createQuery'
+import CreateComment from './components/commentPath/createComment'
+import IndexComments from './components/commentPath/indexComment'
+import EditQuery from './components/QueriesPath/editQuery'
 
 class App extends Component {
   constructor (props) {
@@ -69,6 +72,9 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} exact path='/queries/:id/edit' render={() => (
+            <EditQuery msgAlert={this.msgAlert} user={user} />
+          )}/>
           <Route user={user} exact path='/create' render={() => (
             <CreatingQuery msgAlert={this.msgAlert} user={user} />
           )} />
@@ -78,6 +84,12 @@ class App extends Component {
           <Route user={user} path= '/queries/:id' render={() => (
             <ShowQuery user={user} msgAlert={this.msgAlert} />
           )}/>
+          <AuthenticatedRoute user={user} path='/queries/:id/comments' render={() => (
+            <CreateComment msgAlert={this.msgAlert} user={user} />
+          )} />
+          <Route user={user} path='/queries/:id/index-comments' render={() => (
+            <IndexComments msgAlert={this.msgAlert} user={user} />
+          )} />
         </main>
       </Fragment>
     )

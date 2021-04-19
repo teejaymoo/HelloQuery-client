@@ -2,27 +2,26 @@ import React, { Component } from 'react'
 import { showQuery, deleteQuery } from '../../api/queries'
 import { withRouter, Link, Redirect } from 'react-router-dom'
 import Spinner from 'react-bootstrap/Spinner'
-// import CommentsView from '../CommentRoutes/ViewComments'
+import IndexComments from '../commentPath/indexComment'
+import CreateComment from '../commentPath/createComment'
 
 const showStyle = {
   textAlign: 'center',
-  fontFamily: 'Cormorant Garamond',
-  fontSize: '20px'
+  fontFamily: 'Cormorant Garamond'
 }
 
-const borderParagraph = {
-  fontSize: 'large',
-  display: 'flex',
-  position: 'absolute'
-}
 const dateStyle = {
   display: 'flex',
   justifyContent: 'flex-end'
 }
 
 const borderControl = {
-  border: '1px solid',
   padding: '10px'
+}
+
+const patchDelete = {
+  display: 'flex',
+  flexDirection: 'row'
 }
 
 class ShowQuery extends Component {
@@ -30,8 +29,7 @@ class ShowQuery extends Component {
     super(props)
     this.state = {
       query: null,
-      deleted: false,
-      commentClicked: false
+      deleted: false
     }
   }
   componentDidMount () {
@@ -51,13 +49,6 @@ class ShowQuery extends Component {
         })
       })
   }
-
-  // toggleComments = (event) => {
-  //   // this.setState is only possible because of extends Component
-  //   // never override the value of state by hard coding it
-  //   // always use setState()
-  //   this.setState({ commentClicked: !this.state.commentClicked })
-  // }
   deleteQuery = () => {
     const { msgAlert, user, match } = this.props
     deleteQuery(match.params.id, user)
@@ -94,33 +85,31 @@ class ShowQuery extends Component {
     }
     if (!user) {
       queryJsx = (
-        <div style={borderControl}>
+        <div style={borderControl}><hr/>
           <h2>{query.title}</h2>
-          <p style={borderParagraph}>Written by: {query.keeper}</p>
           <p style={dateStyle} className="card-text"><small className="text-muted">Written on: {query.date.substring(0, 10)}</small></p><hr/>
           <p>{query.body}</p>
         </div>
       )
     } else if (user && user._id !== query.keeper) {
       queryJsx = (
-        <div style={borderControl}>
+        <div style={borderControl}><hr/>
           <h2>{query.title}</h2>
-          <p style={borderParagraph}>Written by: {query.keeper}</p>
           <p style={dateStyle} className="card-text"><small className="text-muted">Written on: {query.date.substring(0, 10)}</small></p><hr/>
           <p>{query.body}</p>
-          {/* <button><Link to={'/querys/' + this.props.match.params.id + '/comments/'}>Create Comment</Link></button> */}
         </div>
       )
     } else if (user && user._id === query.keeper) {
       queryJsx = (
-        <div style={borderControl}>
+        <div style={borderControl}><hr/>
           <h2>{query.title}</h2>
-          <p style={borderParagraph}>Written by: {query.keeper}</p>
+          <div style={patchDelete}>
+            <button onClick={this.deleteQuery} className="btn"><i className="fa fa-trash"></i><small className="text-muted"><Link to={'/'}>Delete</Link></small></button>
+            <button className="btn"><i className="fa fa-trash"></i><small className="text-muted"><Link to={'/queries/' + this.props.match.params.id + '/edit/'}>Edit</Link></small></button>
+          </div>
           <p style={dateStyle} className="card-text"><small className="text-muted">Written on: {query.date.substring(0, 10)}</small></p><hr/>
           <p>{query.body}</p>
-          <button onClick={this.deleteQuery}><Link to={'/'}>Delete</Link></button>
-          <button><a className="btn" href={'/queries/' + this.props.match.params.id + '/edit/'}><i className="icon-edit"></i> Edit</a></button>
-          {/* <button><Link to={'/querys/' + this.props.match.params.id + '/comments'}>Create Comment</Link></button> */}
+          <CreateComment />
         </div>
       )
     }
@@ -128,8 +117,7 @@ class ShowQuery extends Component {
       <div className="row" style={showStyle}>
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
           {queryJsx}
-          {/* <button onClick={this.toggleComments}>{this.state.commentClicked ? 'Close' : 'View Comments'}</button> */}
-          {/* {this.state.commentClicked ? <CommentsView /> : ''} */}
+          <IndexComments />
         </div>
       </div>
     )

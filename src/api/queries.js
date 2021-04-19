@@ -26,7 +26,7 @@ export const showQuery = (id) => {
   })
 }
 
-export const patchQuery = (id, query, user) => {
+export const editQuery = (id, query, user) => {
   return axios({
     url: apiUrl + '/queries/' + id,
     method: 'PATCH',
