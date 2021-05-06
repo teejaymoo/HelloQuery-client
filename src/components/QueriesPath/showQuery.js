@@ -93,7 +93,7 @@ class ShowQuery extends Component {
           <h2>{query.title}</h2>
           <p style={dateStyle} className="card-text"><small className="text-muted">Written on: {query.date.substring(0, 10)}</small></p><hr/>
           <p>{query.body}</p>
-          <p>Need to be <Link to='/sign-in' style={linkStyle} >signed in</Link>, or create an <Link style={linkStyle} to='/sign-up'>account</Link> to comment</p>
+          <p>Need to be <Link to='/sign-in' style={linkStyle}>signed in</Link>, or create an <Link style={linkStyle} to='/sign-up'>account</Link> to comment</p>
         </div>
       )
     } else if (user && user._id !== query.keeper) {

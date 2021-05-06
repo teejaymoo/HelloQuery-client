@@ -9,7 +9,7 @@ const containerStyle = {
   paddingBottom: '10%'
 }
 const linkStyle = {
-  color: 'rgba(255, 255, 255, 0.5)'
+  color: 'white'
 }
 
 class CreatingQuery extends Component {
@@ -63,7 +63,7 @@ class CreatingQuery extends Component {
       return (
         <div className='row'>
           <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-            <h3 style={linkStyle} >Need to be <Link to='/sign-in' style={linkStyle}>signed in</Link>, or create an <Link to='/sign-up' style={linkStyle}>account</Link> to create a Query</h3>
+            <h3 style={containerStyle} >Need to be <Link to='/sign-in' style={linkStyle}>signed in</Link>, or create an <Link to='/sign-up' style={linkStyle}>account</Link> to create a Query</h3>
           </div>
         </div>
       )
