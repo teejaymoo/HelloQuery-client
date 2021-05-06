@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { createComment } from '../../api/comment'
 import { withRouter, Redirect } from 'react-router-dom'
-
+import { createComment } from '../../api/comment'
 import CommentForm from '../commentForm/commentForm'
 
 const boxStyle = {
@@ -16,7 +15,7 @@ class CommentCreate extends Component {
       comment: {
         response: ''
       },
-      created: false
+      createdCommentID: null
     }
   }
   handleChange = event => {
@@ -47,11 +46,15 @@ class CommentCreate extends Component {
         })
       })
   }
+  onBtnClick () {
+    this.setState({ value: this.state.value + 1 })
+    this.props.rerenderParentCallback()
+  }
   render () {
-    const { comment, created } = this.state
+    const { comment, createdCommentID } = this.state
     const { match } = this.props
 
-    if (created) {
+    if (createdCommentID) {
       return <Redirect to={'/queries/' + match.params.id } />
     }
 

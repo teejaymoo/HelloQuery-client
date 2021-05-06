@@ -11,6 +11,7 @@ import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 
 import LandingPageQueries from './components/QueriesPath/landingPageQueries'
+// import ShowQuery from './components/QueriesPath/showQuery'
 import ShowQuery from './components/QueriesPath/showQuery'
 import CreatingQuery from './components/QueriesPath/createQuery'
 import CreateComment from './components/commentPath/createComment'

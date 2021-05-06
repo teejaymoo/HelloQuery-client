@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const boxStyle = {
-  border: '1px solid',
+  color: 'rgba(255, 255, 255, 0.5)',
   padding: '10%'
 }
 

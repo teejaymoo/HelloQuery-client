@@ -4,12 +4,12 @@ import QueryForm from '../queryForm/queryForm'
 import { createQueries } from '../../api/queries'
 
 const containerStyle = {
-  border: '1px solid',
+  color: 'rgba(255, 255, 255, 0.5)',
   margin: '10%',
   paddingBottom: '10%'
 }
-const boxStyle = {
-  border: '1px solid'
+const linkStyle = {
+  color: 'rgba(255, 255, 255, 0.5)'
 }
 
 class CreatingQuery extends Component {
@@ -63,14 +63,14 @@ class CreatingQuery extends Component {
       return (
         <div className='row'>
           <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-            <h3>Need to be <Link to='/sign-in'>signed in</Link>, or create an <Link to='/sign-up'>account</Link> to create a Query</h3>
+            <h3 style={linkStyle} >Need to be <Link to='/sign-in' style={linkStyle}>signed in</Link>, or create an <Link to='/sign-up' style={linkStyle}>account</Link> to create a Query</h3>
           </div>
         </div>
       )
     }
     return (
       <div className='row' style={containerStyle}>
-        <div className='col-sm-10 col-md-8 mx-auto mt-5' style={boxStyle}>
+        <div className='col-sm-10 col-md-8 mx-auto mt-5' >
           <h3>Create Query</h3>
           <QueryForm
             query={query}

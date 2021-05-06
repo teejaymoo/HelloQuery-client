@@ -8,14 +8,6 @@ const h6BlogStyle = {
   textAlign: 'center'
 }
 
-const buttonStyle = {
-  borderRadius: '20px'
-}
-
-const linkStyle = {
-  color: 'black'
-}
-
 const containerStyle = {
   display: 'grid',
   padding: '5% 0 0 0'
@@ -72,8 +64,7 @@ class LandingPage extends Component {
     return (
       <div style={containerStyle}>
         <div style={h6BlogStyle} className="container" id="indexPage">
-          <button style={buttonStyle}><Link to={'/create'} style={linkStyle}>Create a Query</Link></button>
-          <div className="col-7">
+          <div className="col-12">
             <h6>{queryJsx}</h6>
           </div>
         </div>

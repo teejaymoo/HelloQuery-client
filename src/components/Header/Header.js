@@ -1,6 +1,11 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import { Link } from 'react-router-dom'
+
+const linkStyle = {
+  color: 'rgba(255, 255, 255, 0.5)'
+}
 
 const authenticatedOptions = (
   <Fragment>
@@ -22,14 +27,12 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
-    <Navbar.Brand href="#">
-      Hello Query
-    </Navbar.Brand>
+  <Navbar id="navBar" variant="dark" expand="md">
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
+      <button className="btn"><small className="text-muted"><Link to={'/create'} style={linkStyle}>Create a Query</Link></small></button>
       <Nav className="ml-auto">
-        { user && <span className="navbar-text mr-2">Welcome, {user.username}</span>}
+        { user && <span className="navbar-text mr-2">Welcome, {user.email}</span>}
         { alwaysOptions }
         { user ? authenticatedOptions : unauthenticatedOptions }
       </Nav>

@@ -8,11 +8,14 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const boxStyle = {
-  border: '1px solid',
-  padding: '10%'
+  padding: '10%',
+  color: 'rgba(255, 255, 255, 0.5)'
 }
 const account = {
   float: 'right'
+}
+const linkStyle = {
+  color: 'white'
 }
 
 class SignIn extends Component {
@@ -87,7 +90,7 @@ class SignIn extends Component {
               type="submit"
             >
               Submit
-            </Button><p style={account}>Not a member? Create an <Link to='/sign-up'>Account</Link></p>
+            </Button><p style={account}>Not a member? Create an <Link to='/sign-up'style={linkStyle}>Account</Link></p>
           </Form>
         </div>
       </div>

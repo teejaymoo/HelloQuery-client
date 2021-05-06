@@ -6,7 +6,8 @@ import IndexComments from '../commentPath/indexComment'
 
 const showStyle = {
   textAlign: 'center',
-  fontFamily: 'Cormorant Garamond'
+  fontFamily: 'Cormorant Garamond',
+  color: 'rgba(255, 255, 255, 0.5)'
 }
 
 const dateStyle = {
@@ -21,6 +22,10 @@ const borderControl = {
 const patchDelete = {
   display: 'flex',
   flexDirection: 'row'
+}
+
+const linkStyle = {
+  color: 'white'
 }
 
 class ShowQuery extends Component {
@@ -73,7 +78,7 @@ class ShowQuery extends Component {
 
     let queryJsx = ''
     if (deleted) {
-      return <Redirect to='/'/>
+      return <Redirect to={'/queries/' + this.props.match.params.id}/>
     }
     if (!query) {
       return (
@@ -88,7 +93,7 @@ class ShowQuery extends Component {
           <h2>{query.title}</h2>
           <p style={dateStyle} className="card-text"><small className="text-muted">Written on: {query.date.substring(0, 10)}</small></p><hr/>
           <p>{query.body}</p>
-          <p>Need to be <Link to='/sign-in'>signed in</Link>, or create an <Link to='/sign-up'>account</Link> to comment</p>
+          <p>Need to be <Link to='/sign-in' style={linkStyle} >signed in</Link>, or create an <Link style={linkStyle} to='/sign-up'>account</Link> to comment</p>
         </div>
       )
     } else if (user && user._id !== query.keeper) {
@@ -115,7 +120,7 @@ class ShowQuery extends Component {
       )
     }
     return (
-      <div className="row" style={showStyle}>
+      <div style={showStyle}>
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
           {queryJsx}
         </div>
